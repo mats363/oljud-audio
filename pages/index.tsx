@@ -2,12 +2,4 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-// export default function Home() {
-//   return (
-//     <>
-//       <h1>index.tsx</h1>
-//     </>
-//   );
-// }
-
 export { default } from "./home/Home";
