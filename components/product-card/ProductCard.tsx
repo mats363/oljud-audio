@@ -1,7 +1,7 @@
-import { ProductProps } from "../../pages/home/Home";
+import { Product } from "../../models/Product";
 
 interface ProductCardProps {
-  product: ProductProps;
+  product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

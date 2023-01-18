@@ -1,18 +1,11 @@
 import { GetServerSideProps } from "next";
 import Hero from "../../components/hero";
 import ProductCard from "../../components/product-card";
+import { Product } from "../../models/Product";
 import { Supabase } from "../../utils/supabase";
 
-export interface ProductProps {
-  created_at: string | null;
-  id: number;
-  price: number | null;
-  product: string | null;
-  product_image: string | null;
-}
-
 interface HomeProps {
-  products: ProductProps[];
+  products: Product[];
 }
 
 const Home: React.FC<HomeProps> = ({ products }) => {
@@ -36,7 +29,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     console.log(error);
     return { props: {} };
   } else {
-    console.log("success");
     return { props: { products } };
   }
 };

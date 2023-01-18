@@ -11,13 +11,3 @@ if (!SupabaseUrl || !SupabaseKey) {
 export const Supabase = createClient<Database>(
     SupabaseUrl, SupabaseKey
 )
-
-// // write a function to get all products
-// export const getProducts = async () => {
-//     const { data, error } = await Supabase.from('products').select('*')
-//     if (error) {
-//         console.log(error)
-//         return []
-//     }
-//     return data
-// }

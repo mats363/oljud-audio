@@ -12,6 +12,7 @@ export interface Database {
       products: {
         Row: {
           created_at: string | null
+          download_link: string | null
           id: number
           price: number | null
           product: string | null
@@ -19,6 +20,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string | null
+          download_link?: string | null
           id?: number
           price?: number | null
           product?: string | null
@@ -26,6 +28,7 @@ export interface Database {
         }
         Update: {
           created_at?: string | null
+          download_link?: string | null
           id?: number
           price?: number | null
           product?: string | null
