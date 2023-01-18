@@ -1,9 +1,16 @@
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+import { ProductProps } from "../../pages/home/Home";
+
+interface ProductCardProps {
+  product: ProductProps;
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  // ...
   return (
     <div>
-      <p>{product}</p>
+      <img src={product.product_image} alt={product.product} />
+      <h2>{product.product}</h2>
+      <p>{product.price}</p>
     </div>
   );
 };
-
-export default ProductCard;
