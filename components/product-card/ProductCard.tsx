@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <p>{product.price}</p>
       <button onClick={addToCart}>Add to cart</button>
       <audio controls>
-        <source src={product.product_audio} type="audio/mpeg" />
+        <source src={product.audio_preview!} type="audio/mpeg" />
       </audio>
     </div>
   );
