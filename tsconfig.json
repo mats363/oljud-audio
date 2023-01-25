@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/supabase.js", "pages/products/Products.jsx", "pages/home/Home.jsx", "pages/home/Home.jsx", "pages/home/Home.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/supabase.js", "pages/products/Products.jsx", "pages/home/Home.jsx", "pages/home/Home.jsx", "pages/home/Home.jsx", "pages/api/checkout-sessions.ts"],
   "exclude": ["node_modules"]
 }

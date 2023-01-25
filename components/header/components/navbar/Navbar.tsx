@@ -13,6 +13,9 @@ const Navbar: React.FC = () => {
       <li>
         <Link href="/checkout">Checkout</Link>
       </li>
+      <li>
+        <Link href="/login">Log in</Link>
+      </li>
     </ul>
   );
 };

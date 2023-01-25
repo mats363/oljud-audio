@@ -1,4 +1,5 @@
 export interface Product {
+    audio_preview: string | null
     created_at: string | null
     download_link: string | null
     id: number

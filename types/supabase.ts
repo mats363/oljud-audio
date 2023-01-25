@@ -11,6 +11,8 @@ export interface Database {
     Tables: {
       products: {
         Row: {
+          audio_preview: string | null
+          category: string | null
           created_at: string | null
           download_link: string | null
           id: number
@@ -19,6 +21,8 @@ export interface Database {
           product_image: string | null
         }
         Insert: {
+          audio_preview?: string | null
+          category?: string | null
           created_at?: string | null
           download_link?: string | null
           id?: number
@@ -27,6 +31,8 @@ export interface Database {
           product_image?: string | null
         }
         Update: {
+          audio_preview?: string | null
+          category?: string | null
           created_at?: string | null
           download_link?: string | null
           id?: number
