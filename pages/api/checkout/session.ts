@@ -12,5 +12,5 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/donate-with-checkout`,
     })
-    res.status(200).json({id: session.id})
+    res.status(200).json({sessionId: session.id})
 }

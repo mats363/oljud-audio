@@ -10,14 +10,18 @@ export const Checkout = () => {
     const { sessionId } = await fetch("/api/checkout/session", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ quantity: "1" }),
+      body: JSON.stringify({
+        quantity: 1,
+      }),
     }).then((res) => res.json());
     const stripe = await stripePromise;
     const { error } = await stripe!.redirectToCheckout({ sessionId });
   };
   return (
     <div>
-      <button onClick={handleClick}>Checkout</button>
+      <button role="link " onClick={handleClick}>
+        Checkout
+      </button>
     </div>
   );
 };
