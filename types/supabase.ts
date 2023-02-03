@@ -17,6 +17,7 @@ export interface Database {
           download_link: string | null
           id: number
           price: number | null
+          price_id: string | null
           product: string | null
           product_image: string | null
         }
@@ -27,6 +28,7 @@ export interface Database {
           download_link?: string | null
           id?: number
           price?: number | null
+          price_id?: string | null
           product?: string | null
           product_image?: string | null
         }
@@ -37,6 +39,7 @@ export interface Database {
           download_link?: string | null
           id?: number
           price?: number | null
+          price_id?: string | null
           product?: string | null
           product_image?: string | null
         }

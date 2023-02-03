@@ -1,12 +1,11 @@
 import { GetServerSideProps } from "next";
 import Hero from "../../components/hero";
-import ProductCard from "../../components/product-card";
-import { Product } from "../../models/Product";
+import Products from "../../components/products";
+import { IProduct } from "../../models/Product";
 import { Supabase } from "../../utils/supabase";
-import styles from "./Home.module.scss";
 
 interface HomeProps {
-  products: Product[];
+  products: IProduct[];
 }
 
 const Home: React.FC<HomeProps> = ({ products }) => {
@@ -15,11 +14,7 @@ const Home: React.FC<HomeProps> = ({ products }) => {
     return (
       <>
         <Hero />
-        <div className={styles.productContainer}>
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <Products />
       </>
     );
   } else {

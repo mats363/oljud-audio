@@ -1,12 +1,17 @@
 import { useRouter } from "next/router";
+import useSwr from "swr";
 
 const Result: React.FC = () => {
   const router = useRouter();
-  const { session_id } = router.query;
+
+  const { data, error } = useSwr(
+    router.query.session_id ? `/api/checkout/${router.query.session_id}` : null,
+    (url) => fetch(url).then((res) => res.json())
+  );
   return (
     <>
       <h1>Result works!</h1>
-      <pre>{session_id}</pre>
+      <pre>{data ? JSON.stringify(data.session.status) : "...loading"}</pre>
     </>
   );
 };
