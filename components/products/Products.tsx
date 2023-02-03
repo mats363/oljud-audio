@@ -7,13 +7,13 @@ import products from "../../data/products";
 // type ProductProps = { products: IProduct[] };
 
 export const Products: React.FC = ({}) => {
-  const { addItem, removeItem } = useShoppingCart();
+  // const { addItem, removeItem } = useShoppingCart();
 
   return (
     <section className={styles.productContainer}>
-      {products.map((product) => (
+      {/* {products.map((product) => (
         <ProductCard key={product.id} product={product} />
-      ))}
+      ))} */}
     </section>
   );
 };

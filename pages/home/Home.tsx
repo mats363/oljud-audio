@@ -14,7 +14,7 @@ const Home: React.FC<HomeProps> = ({ products }) => {
     return (
       <>
         <Hero />
-        <Products products={products} />
+        <Products />
       </>
     );
   } else {
