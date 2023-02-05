@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import Hero from "../../components/hero";
 import Products from "../../components/products";
-import { IProduct } from "../../models/Product";
+import { IProduct } from "../../models/IProduct";
 import { Supabase } from "../../utils/supabase";
 
 interface HomeProps {
