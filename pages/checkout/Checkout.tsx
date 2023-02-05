@@ -1,5 +1,10 @@
 import { loadStripe } from "@stripe/stripe-js";
-import React from "react";
+// import React from "react";
+
+import { useState } from "react";
+
+import axios from "axios";
+import getStripe from "../../utils/get-stripe";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -26,3 +31,26 @@ export const Checkout = () => {
   );
 };
 export default Checkout;
+// export const Checkout = () => {
+//   const { cartDetails, totalPrice, cartCount, addItem, removeItem, clearCart } =
+//     useShoppingCart();
+//   const [redirecting, setRedirecting] = useState(false);
+
+//   const redirectToCheckout = async () => {
+//     // Create Stripe checkout
+//     const {
+//       data: { id },
+//     } = await axios.post("/api/checkout/sessions", {
+//       items: Object.entries(cartDetails!).map(([_, { id, quantity }]) => ({
+//         price: id,
+//         quantity,
+//       })),
+//     });
+
+//     // Redirect to checkout
+//     const stripe = await getStripe();
+//     await stripe!.redirectToCheckout({ sessionId: id });
+//   };
+// };
+
+// export default Checkout;
