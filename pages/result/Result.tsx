@@ -11,7 +11,7 @@ const Result: React.FC = () => {
   return (
     <>
       <h1>Result works!</h1>
-      <pre>{data ? JSON.stringify(data.session.status) : "...loading"}</pre>
+      <pre>{data ? JSON.stringify(data.status) : "...loading"}</pre>
     </>
   );
 };

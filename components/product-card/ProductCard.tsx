@@ -1,5 +1,5 @@
 import { useShoppingCart } from "use-shopping-cart";
-import { IProduct } from "../../models/Product";
+import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
 
 interface ProductCardProps {

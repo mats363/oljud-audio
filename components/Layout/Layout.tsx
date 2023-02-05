@@ -3,7 +3,7 @@ import styles from "./Layout.module.scss";
 import Header from "../header";
 import { useEffect, useState } from "react";
 import { Supabase } from "../../utils/supabase";
-import { Product } from "../../models/Product";
+import { IProduct } from "../../models/IProduct";
 
 interface LayoutProps {
   children: React.ReactNode;

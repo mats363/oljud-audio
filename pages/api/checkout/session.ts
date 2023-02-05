@@ -3,6 +3,8 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {apiVersion: '2022-11-15'});
 
+const testCart = [{id: 'price_1MRu7QFvMnspOIIU6CsSZso8', quantity: 1}]
+
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
     const {quantity} = req.body
     if (req.method === "POST"){
