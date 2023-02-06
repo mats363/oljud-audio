@@ -4,11 +4,12 @@ import {
   incrementQuantity,
   decrementQuantity,
   removeFromCart,
-} from "../../redux/Cart.slice";
+} from "../../redux/cart.slice";
 import styles from "./Checkout.module.scss";
 
 import getStripe from "../../utils/get-stripe";
 import { IProduct } from "../../models/IProduct";
+import { useAppDispatch, useAppSelector } from "../../hooks/ReduxHooks";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -16,22 +17,23 @@ const stripePromise = loadStripe(
 
 const Checkout: React.FC = () => {
   // Extracting cart state from redux store
-  const cart = useSelector((state) => state.cart);
+  const cart = useAppSelector((state) => state.cart as IProduct[]); // q: how do I type this?  //a:
 
   // Reference to the dispatch function from redux store
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClick = async () => {
     try {
       const { sessionId } = await fetch("/api/checkout/session", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          cart,
-        }),
+        body: JSON.stringify({ cart }),
       }).then((res) => res.json());
+      console.log((sessionId as string) + " i checkout.tsx");
       const stripe = await stripePromise;
-      await stripe!.redirectToCheckout({ sessionId });
+      const { error } = await stripe!.redirectToCheckout({
+        sessionId,
+      });
       console.log("success i checkout.tsx" + sessionId);
     } catch (error) {
       console.log(error + " i checkout.tsx");

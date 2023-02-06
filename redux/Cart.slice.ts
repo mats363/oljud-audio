@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProduct } from '../models/IProduct';
-import type { RootState } from '../redux/Store' 
+import { RootState } from './Store';
 
 // Define a type for the slice state
 interface CounterState {
@@ -13,7 +13,7 @@ const initialState: CounterState = {
 }
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: [] as IProduct[],
+  initialState: [] as any[],
   reducers: {
     addToCart: (state, action) => {
       const itemExists = state.find((item) => item.id === action.payload.id);

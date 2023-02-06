@@ -1,12 +1,8 @@
 import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/Cart.slice";
+import { addToCart } from "../../redux/cart.slice";
 import Cart from "../shopping-cart/ShoppingCart";
-
-interface ProductCardProps {
-  product: any;
-}
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
