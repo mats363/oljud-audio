@@ -22,6 +22,13 @@ const Checkout: React.FC = () => {
   // Reference to the dispatch function from redux store
   const dispatch = useAppDispatch();
 
+  const getTotalPrice = () => {
+    return cart.reduce(
+      (accumulator, item) => accumulator + item.quantity * item.price!,
+      0
+    );
+  };
+
   const handleClick = async () => {
     try {
       const { sessionId } = await fetch("/api/checkout/session", {
@@ -60,11 +67,13 @@ const Checkout: React.FC = () => {
                 <p>{item.product}</p>
                 <p>$ {item.price}</p>
                 <p>{item.quantity}</p>
-                <div className={styles.buttons}></div>
+                <div className={styles.buttons}>
+                  <button onClick={incrementQuantity}>Remove from cart</button>
+                </div>
                 <p>$ {item.quantity * item.price!}</p>
               </div>
             ))}
-            {/* <h2>Grand Total: $ {getTotalPrice()}</h2> */}
+            <h2>Total: SEK {getTotalPrice()}</h2>
             <button role="link " onClick={handleClick}>
               Checkout
             </button>
