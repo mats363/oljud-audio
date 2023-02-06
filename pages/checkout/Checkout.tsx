@@ -32,11 +32,11 @@ const Checkout: React.FC = () => {
       console.log((sessionId as string) + " i checkout.tsx");
       const stripe = await stripePromise;
       const { error } = await stripe!.redirectToCheckout({
-        sessionId,
+        sessionId: sessionId as string,
       });
-      console.log("success i checkout.tsx" + sessionId);
+      console.log("success i checkout.tsx");
     } catch (error) {
-      console.log(error + " i checkout.tsx");
+      console.log(error + "error i checkout.tsx");
     }
   };
 
