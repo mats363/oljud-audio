@@ -5,7 +5,7 @@ import { IProduct } from "../../models/IProduct";
 import { Supabase } from "../../utils/supabase";
 
 interface HomeProps {
-  products: IProduct[];
+  products: any[];
 }
 
 const Home: React.FC<HomeProps> = ({ products }) => {

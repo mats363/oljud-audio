@@ -6,6 +6,8 @@ export interface IProduct {
     price: number | null
     product: string | null
     product_image: string | null
+    item: string | null
+    quantity: number
     // sku: string | null
     // sku_id: string | null
 }

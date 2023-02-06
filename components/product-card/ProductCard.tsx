@@ -1,32 +1,29 @@
-import { useShoppingCart } from "use-shopping-cart";
 import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/Cart.slice";
 
 interface ProductCardProps {
-  product: IProduct;
+  product: any;
 }
 
-const addToCart = () => {
-  console.log("addToCart");
-};
-
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addItem, removeItem } = useShoppingCart();
+  const dispatch = useDispatch();
 
-  // ...
+  const handleClick = () => {
+    addToCart(product);
+    console.log(product);
+  };
+
   return (
     <div className={styles.container}>
-      {/* <img src={product.product_image} alt={product.product} />
+      <img src={product.product_image} alt={product.product} />
       <h2>{product.product}</h2>
       <p>{product.price}</p>
-      onClick=
-      {() => {
-        console.log(product);
-        // addItem(product);
-      }}{" "}
       <audio controls>
         <source src={product.audio_preview!} type="audio/mpeg" />
-      </audio> */}
+      </audio>
+      <button onClick={handleClick}></button>
     </div>
   );
 };
