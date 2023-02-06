@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const fetchData = async () => {
   const { data: products, error } = await Supabase.from("products").select("*");
-  if (products) console.log("i Layout");
+  if (products) console.log("i Layout" + products[0].product);
   return { products };
 };
 
