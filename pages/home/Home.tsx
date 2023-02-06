@@ -9,12 +9,12 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ products }) => {
-  console.log(products);
+  console.log(products + " i Home");
   if (products) {
     return (
       <>
         <Hero />
-        <Products />
+        <Products products={products} />
       </>
     );
   } else {

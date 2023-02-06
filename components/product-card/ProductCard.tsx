@@ -2,6 +2,7 @@ import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/Cart.slice";
+import Cart from "../shopping-cart/ShoppingCart";
 
 interface ProductCardProps {
   product: any;
@@ -12,7 +13,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const handleClick = () => {
     addToCart(product);
-    console.log(product);
   };
 
   return (
@@ -23,7 +23,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <audio controls>
         <source src={product.audio_preview!} type="audio/mpeg" />
       </audio>
-      <button onClick={handleClick}></button>
+      <button onClick={handleClick}>Add to cart</button>
+      <button onClick={() => dispatch(addToCart(product))}>Dispatch</button>
     </div>
   );
 };

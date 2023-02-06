@@ -3,15 +3,15 @@ import { IProduct } from "../../models/IProduct";
 import ProductCard from "../product-card";
 import styles from "./Products.module.scss";
 
-type ProductProps = { props: any[] };
+type ProductProps = { products: IProduct[] };
 
-export const Products: React.FC<ProductProps> = ({ props }) => {
+export const Products: React.FC<ProductProps> = ({ products }) => {
   // const { addItem, removeItem } = useShoppingCart();
-  console.log(props);
+  console.log(products[1].product + " i Products");
   return (
     <section className={styles.productContainer}>
       {products!.map((product) => (
-        <ProductCard key={product.id} props={product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </section>
   );

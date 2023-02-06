@@ -8,6 +8,7 @@ import {
 import styles from "./Checkout.module.scss";
 
 import getStripe from "../../utils/get-stripe";
+import { IProduct } from "../../models/IProduct";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -20,16 +21,21 @@ const Checkout: React.FC = () => {
   // Reference to the dispatch function from redux store
   const dispatch = useDispatch();
 
-  const handleClick = async (event: any) => {
-    const { sessionId } = await fetch("/api/checkout/session", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        quantity: 1,
-      }),
-    }).then((res) => res.json());
-    const stripe = await stripePromise;
-    const { error } = await stripe!.redirectToCheckout({ sessionId });
+  const handleClick = async () => {
+    try {
+      const { sessionId } = await fetch("/api/checkout/session", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          cart,
+        }),
+      }).then((res) => res.json());
+      const stripe = await stripePromise;
+      await stripe!.redirectToCheckout({ sessionId });
+      console.log("success i checkout.tsx" + sessionId);
+    } catch (error) {
+      console.log(error + " i checkout.tsx");
+    }
   };
 
   return (
@@ -47,16 +53,16 @@ const Checkout: React.FC = () => {
               <div>Actions</div>
               <div>Total Price</div>
             </div>
-            {cart.map((item: any) => (
+            {cart.map((item: IProduct) => (
               <div key={item.id} className={styles.body}>
                 <p>{item.product}</p>
                 <p>$ {item.price}</p>
                 <p>{item.quantity}</p>
                 <div className={styles.buttons}></div>
-                <p>$ {item.quantity * item.price}</p>
+                <p>$ {item.quantity * item.price!}</p>
               </div>
             ))}
-            <h2>Grand Total: $ {getTotalPrice()}</h2>
+            {/* <h2>Grand Total: $ {getTotalPrice()}</h2> */}
             <button role="link " onClick={handleClick}>
               Checkout
             </button>
