@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../../hooks/ReduxHooks";
 import { useShoppingCart } from "../../../shopping-cart/useShoppingCart";
 import styles from "./Navbar.module.scss";
 
 const Navbar: React.FC = () => {
   // Selecting cart from global state
-  const cart = useAppSelector((state) => state.cart);
   const cartItems = useShoppingCart((state) => state.cartItems);
 
   return (
