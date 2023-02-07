@@ -13,7 +13,7 @@ const initialState: CounterState = {
 }
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: [] as any[],
+  initialState: [] as IProduct[],
   reducers: {
     addToCart: (state, action) => {
       const itemExists = state.find((item) => item.id === action.payload.id);
