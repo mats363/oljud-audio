@@ -10,36 +10,35 @@ import styles from "./Checkout.module.scss";
 import getStripe from "../../utils/get-stripe";
 import { IProduct } from "../../models/IProduct";
 import { useAppDispatch, useAppSelector } from "../../hooks/ReduxHooks";
+import { useShoppingCart } from "../../components/shopping-cart/useShoppingCart";
+import { useEffect, useState } from "react";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
 const Checkout: React.FC = () => {
+  const [show, setShow] = useState(false);
   // Extracting cart state from redux store
-  const cart = useAppSelector((state) => state.cart as IProduct[]); // q: how do I type this?  //a:
-
   // Reference to the dispatch function from redux store
-  const dispatch = useAppDispatch();
+  const cart = useShoppingCart((state) => state.cartItems);
 
   const getTotalPrice = () => {
-    return cart.reduce(
-      (accumulator, item) => accumulator + item.quantity * item.price!,
-      0
-    );
+    return cart.reduce((accumulator, item) => accumulator + item.price!, 0);
   };
 
   const handleClick = async () => {
     try {
+      console.log(cart);
       const { sessionId } = await fetch("/api/checkout/session", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ cart }),
+        body: JSON.stringify(cart),
       }).then((res) => res.json());
       console.log((sessionId as string) + " i checkout.tsx");
       const stripe = await stripePromise;
       const { error } = await stripe!.redirectToCheckout({
-        sessionId: sessionId as string,
+        sessionId,
       });
       console.log("success i checkout.tsx");
     } catch (error) {
@@ -47,13 +46,17 @@ const Checkout: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    setShow(true);
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
-        {cart.length === 0 ? (
+        {show && cart.length === 0 ? (
           <h1>Your Cart is Empty!</h1>
         ) : (
-          <>
+          <div>
             <div className={styles.header}>
               <div>Image</div>
               <div>Product</div>
@@ -62,23 +65,25 @@ const Checkout: React.FC = () => {
               <div>Actions</div>
               <div>Total Price</div>
             </div>
-            {cart.map((item: IProduct) => (
-              <div key={item.id} className={styles.body}>
-                <p>{item.product}</p>
-                <p>$ {item.price}</p>
-                <p>{item.quantity}</p>
-                <div className={styles.buttons}>
-                  <button onClick={incrementQuantity}>Remove from cart</button>
+            {show &&
+              cart.map((item: IProduct) => (
+                <div key={item.id} className={styles.body}>
+                  <p>{item.product}</p>
+                  <p>$ {item.price}</p>
+                  <div className={styles.buttons}>
+                    <button onClick={() => removeFromCart(item.id)}>
+                      Remove from cart
+                    </button>
+                  </div>
+                  <p>$ {item.price!}</p>
                 </div>
-                <p>$ {item.quantity * item.price!}</p>
-              </div>
-            ))}
-            <h2>Total: SEK {getTotalPrice()}</h2>
-            <button role="link " onClick={handleClick}>
+              ))}
+            <h2 suppressHydrationWarning>Total: SEK {getTotalPrice()}</h2>
+            <button role="link" onClick={handleClick}>
               Checkout
             </button>
             ;
-          </>
+          </div>
         )}
       </div>
       ;

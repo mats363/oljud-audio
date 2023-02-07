@@ -3,9 +3,12 @@ import styles from "./ProductCard.module.scss";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/cart.slice";
 import { useAppDispatch } from "../../hooks/ReduxHooks";
+import { useShoppingCart } from "../shopping-cart/useShoppingCart";
+import { ProductCardProps } from "./types";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
+  const { addToCart, removeFromCart } = useShoppingCart();
 
   return (
     <div className={styles.container}>
@@ -15,8 +18,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <audio controls>
         <source src={product.audio_preview!} type="audio/mpeg" />
       </audio>
-      <button onClick={() => dispatch(addToCart(product))}>Add to cart</button>
-      <button onClick={() => dispatch(removeFromCart(product))}>
+      <button onClick={() => addToCart(product)}>Add to cart</button>
+      <button onClick={() => removeFromCart(product.id)}>
         Remove from cart
       </button>
     </div>
