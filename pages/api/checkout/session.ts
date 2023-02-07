@@ -32,7 +32,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     try {
       const cart = req.body 
       if (cart === undefined || !Array.isArray(cart)) {res.status(400).json({statusCode: 400, message: "Bad Request"})}
-      const line_items = cart.map((item: { price_id: string; quantity: number; }) => ({ price: item.price_id, quantity: item.quantity }));
+      const line_items = cart.map((item: IProduct) => ({ price: item.price_id, quantity: 1 }));
       console.log(line_items, "i handler")
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],

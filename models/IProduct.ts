@@ -8,5 +8,4 @@ export interface IProduct {
     product: string | null
     product_image: string | null
     item: string | null
-    quantity: number | null
 }
