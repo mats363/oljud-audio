@@ -1,4 +1,4 @@
-import Layout from "../components/layout";
+import Layout from "../components/layout/Layout";
 
 interface MyAppProps {
   Component: React.ComponentType<any>;
