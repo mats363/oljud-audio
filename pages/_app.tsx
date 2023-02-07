@@ -1,6 +1,7 @@
 import Layout from "../components/layout";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 interface MyAppProps {
   Component: React.ComponentType<any>;
