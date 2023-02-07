@@ -1,56 +1,89 @@
 import { loadStripe } from "@stripe/stripe-js";
-// import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  incrementQuantity,
+  decrementQuantity,
+  removeFromCart,
+} from "../../redux/cart.slice";
+import styles from "./Checkout.module.scss";
 
-import { useState } from "react";
-
-import axios from "axios";
 import getStripe from "../../utils/get-stripe";
+import { IProduct } from "../../models/IProduct";
+import { useAppDispatch, useAppSelector } from "../../hooks/ReduxHooks";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-export const Checkout = () => {
-  const handleClick = async (event: any) => {
-    const { sessionId } = await fetch("/api/checkout/session", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        quantity: 1,
-      }),
-    }).then((res) => res.json());
-    const stripe = await stripePromise;
-    const { error } = await stripe!.redirectToCheckout({ sessionId });
+const Checkout: React.FC = () => {
+  // Extracting cart state from redux store
+  const cart = useAppSelector((state) => state.cart as IProduct[]); // q: how do I type this?  //a:
+
+  // Reference to the dispatch function from redux store
+  const dispatch = useAppDispatch();
+
+  const getTotalPrice = () => {
+    return cart.reduce(
+      (accumulator, item) => accumulator + item.quantity * item.price!,
+      0
+    );
   };
+
+  const handleClick = async () => {
+    try {
+      const { sessionId } = await fetch("/api/checkout/session", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ cart }),
+      }).then((res) => res.json());
+      console.log((sessionId as string) + " i checkout.tsx");
+      const stripe = await stripePromise;
+      const { error } = await stripe!.redirectToCheckout({
+        sessionId: sessionId as string,
+      });
+      console.log("success i checkout.tsx");
+    } catch (error) {
+      console.log(error + "error i checkout.tsx");
+    }
+  };
+
   return (
-    <div>
-      <button role="link " onClick={handleClick}>
-        Checkout
-      </button>
-    </div>
+    <>
+      <div className={styles.container}>
+        {cart.length === 0 ? (
+          <h1>Your Cart is Empty!</h1>
+        ) : (
+          <>
+            <div className={styles.header}>
+              <div>Image</div>
+              <div>Product</div>
+              <div>Price</div>
+              <div>Quantity</div>
+              <div>Actions</div>
+              <div>Total Price</div>
+            </div>
+            {cart.map((item: IProduct) => (
+              <div key={item.id} className={styles.body}>
+                <p>{item.product}</p>
+                <p>$ {item.price}</p>
+                <p>{item.quantity}</p>
+                <div className={styles.buttons}>
+                  <button onClick={incrementQuantity}>Remove from cart</button>
+                </div>
+                <p>$ {item.quantity * item.price!}</p>
+              </div>
+            ))}
+            <h2>Total: SEK {getTotalPrice()}</h2>
+            <button role="link " onClick={handleClick}>
+              Checkout
+            </button>
+            ;
+          </>
+        )}
+      </div>
+      ;
+    </>
   );
 };
+
 export default Checkout;
-// export const Checkout = () => {
-//   const { cartDetails, totalPrice, cartCount, addItem, removeItem, clearCart } =
-//     useShoppingCart();
-//   const [redirecting, setRedirecting] = useState(false);
-
-//   const redirectToCheckout = async () => {
-//     // Create Stripe checkout
-//     const {
-//       data: { id },
-//     } = await axios.post("/api/checkout/sessions", {
-//       items: Object.entries(cartDetails!).map(([_, { id, quantity }]) => ({
-//         price: id,
-//         quantity,
-//       })),
-//     });
-
-//     // Redirect to checkout
-//     const stripe = await getStripe();
-//     await stripe!.redirectToCheckout({ sessionId: id });
-//   };
-// };
-
-// export default Checkout;

@@ -1,4 +1,6 @@
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
 interface MyAppProps {
   Component: React.ComponentType<any>;
@@ -7,9 +9,11 @@ interface MyAppProps {
 
 const MyApp: React.FC<MyAppProps> = ({ Component, pageProps }) => {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Provider store={store}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   );
 };
 

@@ -5,16 +5,16 @@ import { IProduct } from "../../models/IProduct";
 import { Supabase } from "../../utils/supabase";
 
 interface HomeProps {
-  products: IProduct[];
+  products: any[];
 }
 
 const Home: React.FC<HomeProps> = ({ products }) => {
-  console.log(products);
+  console.log(products + " i Home");
   if (products) {
     return (
       <>
         <Hero />
-        <Products />
+        <Products products={products} />
       </>
     );
   } else {

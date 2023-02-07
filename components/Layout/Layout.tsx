@@ -9,16 +9,16 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-// const fetchData = async () => {
-//   const { data: products, error } = await Supabase.from("products").select("*");
-//   if (products) console.log("i Layout");
-//   return { products };
-// };
+const fetchData = async () => {
+  const { data: products, error } = await Supabase.from("products").select("*");
+  if (products) console.log("i Layout" + products[0].product);
+  return { products };
+};
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   useEffect(() => {
     console.log("useEffect in layout");
-    // fetchData();
+    fetchData();
   }, []);
   return (
     <div className={styles.container}>
