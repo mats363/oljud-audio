@@ -31,6 +31,7 @@ const Checkout: React.FC = () => {
 
   const handleClick = async () => {
     try {
+      console.log(cart);
       const { sessionId } = await fetch("/api/checkout/session", {
         method: "POST",
         headers: { "content-type": "application/json" },

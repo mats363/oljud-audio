@@ -30,8 +30,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {apiVersion: '2022-11-
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST"){
     try {
-      const {cart} = req.body 
+      const cart = req.body 
+      if (cart === undefined || !Array.isArray(cart)) {res.status(400).json({statusCode: 400, message: "Bad Request"})}
       const line_items = cart.map((item: { price_id: string; quantity: number; }) => ({ price: item.price_id, quantity: item.quantity }));
+      console.log(line_items, "i handler")
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items,
@@ -41,6 +43,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     })
 
     if (!session.id) {
+      console.log(session)
       return res.status(500).json({ statusCode: 500, message: "Failed to create checkout session" })
     }
 
