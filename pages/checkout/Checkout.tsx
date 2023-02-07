@@ -18,7 +18,7 @@ const stripePromise = loadStripe(
 const Checkout: React.FC = () => {
   // Extracting cart state from redux store
   const cart = useAppSelector((state) => state.cart as IProduct[]); // q: how do I type this?  //a:
-
+  console.log(cart);
   // Reference to the dispatch function from redux store
   const dispatch = useAppDispatch();
 
@@ -34,12 +34,12 @@ const Checkout: React.FC = () => {
       const { sessionId } = await fetch("/api/checkout/session", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ cart }),
+        body: JSON.stringify(cart),
       }).then((res) => res.json());
       console.log((sessionId as string) + " i checkout.tsx");
       const stripe = await stripePromise;
       const { error } = await stripe!.redirectToCheckout({
-        sessionId: sessionId as string,
+        sessionId,
       });
       console.log("success i checkout.tsx");
     } catch (error) {
