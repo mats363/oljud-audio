@@ -10,18 +10,12 @@ const Navbar: React.FC = () => {
   return (
     <ul className={styles.container}>
       <li>
-        <Link href="/products">Products</Link>
-      </li>
-      <li>
         <Link href="/about">About</Link>
       </li>
       <li>
         <Link suppressHydrationWarning href="/checkout">
           Checkout({cartItems.length})
         </Link>
-      </li>
-      <li>
-        <Link href="/login">Log in</Link>
       </li>
     </ul>
   );
