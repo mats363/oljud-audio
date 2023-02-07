@@ -1,15 +1,11 @@
 import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/cart.slice";
-import Cart from "../shopping-cart/ShoppingCart";
+import { addToCart, removeFromCart } from "../../redux/cart.slice";
+import { useAppDispatch } from "../../hooks/ReduxHooks";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    addToCart(product);
-  };
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.container}>
@@ -20,6 +16,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <source src={product.audio_preview!} type="audio/mpeg" />
       </audio>
       <button onClick={() => dispatch(addToCart(product))}>Add to cart</button>
+      <button onClick={() => dispatch(removeFromCart(product))}>
+        Remove from cart
+      </button>
     </div>
   );
 };
