@@ -2,8 +2,6 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { IProduct } from "../../models/IProduct";
 
-
-
 interface ShoppingCart {
   cartItems: IProduct[];
   addToCart: (product: IProduct) => void;

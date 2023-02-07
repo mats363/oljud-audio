@@ -1,15 +1,7 @@
 import { loadStripe } from "@stripe/stripe-js";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  incrementQuantity,
-  decrementQuantity,
-  removeFromCart,
-} from "../../redux/cart.slice";
 import styles from "./Checkout.module.scss";
-
 import getStripe from "../../utils/get-stripe";
 import { IProduct } from "../../models/IProduct";
-import { useAppDispatch, useAppSelector } from "../../hooks/ReduxHooks";
 import { useShoppingCart } from "../../components/shopping-cart/useShoppingCart";
 import { useEffect, useState } from "react";
 
@@ -19,9 +11,9 @@ const stripePromise = loadStripe(
 
 const Checkout: React.FC = () => {
   const [show, setShow] = useState(false);
-  // Extracting cart state from redux store
-  // Reference to the dispatch function from redux store
+
   const cart = useShoppingCart((state) => state.cartItems);
+  const removeFromCart = useShoppingCart((state) => state.removeFromCart);
 
   const getTotalPrice = () => {
     return cart.reduce((accumulator, item) => accumulator + item.price!, 0);
