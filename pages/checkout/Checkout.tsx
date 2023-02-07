@@ -68,7 +68,9 @@ const Checkout: React.FC = () => {
                 <p>$ {item.price}</p>
                 <p>{item.quantity}</p>
                 <div className={styles.buttons}>
-                  <button onClick={incrementQuantity}>Remove from cart</button>
+                  <button onClick={() => dispatch(removeFromCart(item))}>
+                    Remove from cart
+                  </button>
                 </div>
                 <p>$ {item.quantity * item.price!}</p>
               </div>
