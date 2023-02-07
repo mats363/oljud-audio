@@ -24,7 +24,7 @@ const Checkout: React.FC = () => {
 
   const getTotalPrice = () => {
     return cart.reduce(
-      (accumulator, item) => accumulator + item.quantity * item.price!,
+      (accumulator, item) => accumulator + item.quantity! * item.price!,
       0
     );
   };
@@ -72,7 +72,7 @@ const Checkout: React.FC = () => {
                     Remove from cart
                   </button>
                 </div>
-                <p>$ {item.quantity * item.price!}</p>
+                <p>$ {item.quantity! * item.price!}</p>
               </div>
             ))}
             <h2>Total: SEK {getTotalPrice()}</h2>

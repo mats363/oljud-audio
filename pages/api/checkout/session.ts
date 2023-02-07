@@ -31,7 +31,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
   if (req.method === "POST"){
     try {
       const {cart} = req.body 
-      const line_items = cart.map((item: { price_id: any; quantity: any; }) => ({ price: item.price_id, quantity: item.quantity }));
+      const line_items = cart.map((item: { price_id: string; quantity: number; }) => ({ price: item.price_id, quantity: item.quantity }));
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items,
