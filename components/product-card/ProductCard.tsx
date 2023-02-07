@@ -8,7 +8,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className={styles.container}>
-      <img src={product.product_image} alt={product.product} />
+      <img src={product.product_image!} alt={product.product!} />
       <h2>{product.product}</h2>
       <p>{product.price}</p>
       <audio controls>
