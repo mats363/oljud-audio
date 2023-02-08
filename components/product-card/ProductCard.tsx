@@ -1,32 +1,23 @@
-import { useShoppingCart } from "use-shopping-cart";
-import { IProduct } from "../../models/Product";
+import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
-
-interface ProductCardProps {
-  product: IProduct;
-}
-
-const addToCart = () => {
-  console.log("addToCart");
-};
+import { useShoppingCart } from "../shopping-cart/useShoppingCart";
+import { ProductCardProps } from "./types";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addItem, removeItem } = useShoppingCart();
+  const { addToCart, removeFromCart } = useShoppingCart();
 
-  // ...
   return (
     <div className={styles.container}>
-      {/* <img src={product.product_image} alt={product.product} />
+      <img src={product.product_image!} alt={product.product!} />
       <h2>{product.product}</h2>
       <p>{product.price}</p>
-      onClick=
-      {() => {
-        console.log(product);
-        // addItem(product);
-      }}{" "}
       <audio controls>
         <source src={product.audio_preview!} type="audio/mpeg" />
-      </audio> */}
+      </audio>
+      <button onClick={() => addToCart(product)}>Add to cart</button>
+      <button onClick={() => removeFromCart(product.id)}>
+        Remove from cart
+      </button>
     </div>
   );
 };

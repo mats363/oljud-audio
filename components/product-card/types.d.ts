@@ -1,5 +1,7 @@
+import { IProduct } from "../../models/IProduct";
+
 type ProductCardProps = {
-    product: any;
+    product: IProduct;
     // coverImage: string;
     // title: string;
 }
