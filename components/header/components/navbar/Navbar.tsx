@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useShoppingCart } from "../../../shopping-cart/useShoppingCart";
 import styles from "./Navbar.module.scss";
+import CartIcon from "../../../../assets/svgs/cart2.svg";
 
 const Navbar: React.FC = () => {
   // Selecting cart from global state
@@ -9,14 +10,15 @@ const Navbar: React.FC = () => {
 
   return (
     <ul className={styles.container}>
-      <li>
+      <li className={styles.linkContainer}>
         <Link href="/about">About</Link>
       </li>
-      <li>
+      <div className={styles.cartContainer}>
         <Link suppressHydrationWarning href="/checkout">
-          Checkout({cartItems.length})
+          <CartIcon />
         </Link>
-      </li>
+        <p className={styles.cartCounter}>{cartItems.length}</p>
+      </div>
     </ul>
   );
 };

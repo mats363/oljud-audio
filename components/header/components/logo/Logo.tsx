@@ -1,9 +1,10 @@
 import Link from "next/link";
+import LogoIcon from "../../../../assets/svgs/logo.svg";
 
 const Logo: React.FC = () => {
   return (
     <Link href="/">
-      <h1>Logo</h1>
+      <LogoIcon />
     </Link>
   );
 };

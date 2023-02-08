@@ -1,0 +1,208 @@
+// @use 'sass:math';
+
+$primary-color: #0D0D0D;
+$secondary-color: #ff5722;
+$gray: #3D3B3B;
+$off-white: #f5f5f5;
+
+// /*
+//  * Bootstrap overrides and custom variables are to be defined here
+//  */
+
+// /* FONTS */
+
+// $font-family-sans-serif: 'Source Sans Pro', 'Helvetica Neue', Helvetica, -apple-system, system-ui,
+//   BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+// $body-font: $font-family-sans-serif;
+// $title-font: $font-family-sans-serif;
+
+// $button-font-size: 16px;
+
+// /* COLORS */
+
+// $white: #ffffff;
+// $off-white: #f5f5f5;
+// $black: #000000;
+// $off-black: #222;
+// $light-blue: #eaf3ff;
+// $blue: #4983c8;
+// $dark-blue: #0051b0;
+// $light-pink: #ffdcdd;
+// $light-purple: #ebc0f3;
+// $red: #d0021b;
+// $yellow: #fcd217;
+// $light-green: #d3f3c0;
+// $green: #2ac768;
+// $light-grey: #f2f2f2;
+// $grey: #8d8d8d;
+// $dark-grey: #4a4a4a;
+// $pink: #e61e4d;
+
+// $primary-color: $pink;
+// $primary-gradient: linear-gradient(to right, $pink 0%, #e31c5f 50%, #d70466 100%);
+
+// $colors: (
+//   blue: $blue,
+//   red: $red,
+//   yellow: $yellow,
+//   green: $green,
+//   white: $white,
+//   gray: $light-grey,
+//   gray-dark: $dark-grey,
+// );
+
+// $theme-colors: (
+//   primary: $blue,
+//   secondary: $light-grey,
+//   success: $green,
+//   warning: $yellow,
+//   danger: $red,
+// );
+
+// $body-bg: $white;
+// $body-text-color: $off-black;
+
+// /* COLORS MIXINS */
+
+// @mixin add-theme-background($number: 1) {
+//   $color: $light-grey;
+//   @if ($number == 1) {
+//     $color: $light-blue;
+//   }
+//   @if ($number == 2) {
+//     $color: $light-pink;
+//   }
+//   @if ($number == 3) {
+//     $color: $light-green;
+//   }
+//   @if ($number == 4) {
+//     $color: $light-purple;
+//   }
+//   $center-color: mix($color, $white, 30%);
+//   background: $color;
+//   background: -moz-radial-gradient(circle, #{$center-color} 0%, #{$color} 100%);
+//   background: -webkit-radial-gradient(circle, #{$center-color} 0%, #{$color} 100%);
+//   background: radial-gradient(circle, #{$center-color} 0%, #{$color} 100%);
+//   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$center-color}",endColorstr="#{$color}",GradientType=1);
+// }
+
+// @mixin add-theme-backgrounds {
+//   @for $i from 1 through 4 {
+//     &.theme-bg-#{$i} {
+//       @include add-theme-background($i);
+//     }
+//   }
+// }
+
+// /* ANIMATION */
+
+// $transition-duration: 0.25s;
+
+// /* RESPONSIVE BREAKPOINTS */
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+// );
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px,
+// );
+
+// $grid-breakpoint-xxs: 340px; // This is for iPhone 5 size only and is only used temporarily for special fixes
+// $grid-breakpoint-xs: map-get($grid-breakpoints, 'xs');
+// $grid-breakpoint-sm: map-get($grid-breakpoints, 'sm');
+// $grid-breakpoint-md: map-get($grid-breakpoints, 'md');
+// $grid-breakpoint-lg: map-get($grid-breakpoints, 'lg');
+// $grid-breakpoint-xl: map-get($grid-breakpoints, 'xl');
+
+// $container-width-sm: map-get($container-max-widths, 'sm');
+// $container-width-md: map-get($container-max-widths, 'md');
+// $container-width-lg: map-get($container-max-widths, 'lg');
+// $container-width-xl: map-get($container-max-widths, 'xl');
+
+// @mixin sm-breakpoint {
+//   @media screen and (min-width: $grid-breakpoint-sm) {
+//     @content;
+//   }
+// }
+
+// @mixin md-breakpoint {
+//   @media screen and (min-width: $grid-breakpoint-md) {
+//     @content;
+//   }
+// }
+
+// @mixin lg-breakpoint {
+//   @media screen and (min-width: $grid-breakpoint-lg) {
+//     @content;
+//   }
+// }
+
+// @mixin xl-breakpoint {
+//   @media screen and (min-width: $grid-breakpoint-xl) {
+//     @content;
+//   }
+// }
+
+// @mixin hidden {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   padding: 0;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   white-space: nowrap;
+//   border: 0;
+//   opacity: 0;
+//   left: -100000px;
+// }
+
+// /* MARGINS */
+// $item-margin: 10px;
+// $group-margin: 20px;
+
+// /* PADDINGS */
+
+// $item-padding: 20px;
+// $container-padding: 10px;
+// $row-padding: 60px;
+// $page-padding: 60px;
+// $header-padding: 30px;
+
+// /* PADDING CALCULATIONS */
+
+// $header-padding-top: $header-padding;
+// $header-padding-bottom: $header-padding;
+// $header-padding-left: $header-padding + $container-padding;
+// $header-padding-right: $header-padding + $container-padding;
+
+// /* BORDER RADIUS */
+
+// $button-height: 45px;
+// $button-border-radius: math.div($button-height, 2);
+// $item-border-radius: 10px;
+
+// /* BOX SHADOW */
+
+// $item-box-shadow: 0 2px 4px $grey;
+// $item-box-shadow-reverse: 0 2px 4px $white;
+
+// /* AUDIO PLAYER */
+
+// $audio-player-desktop-height: 100px;
+// $audio-player-mobile-height: 70px;
+// $audio-player-controls-width: 150px;
+// $audio-player-padding: 10px;
+
+// /* NAVBAR */
+
+// $navbar-height-desktop: 120px;
+// $navbar-height-mobile: 78px;

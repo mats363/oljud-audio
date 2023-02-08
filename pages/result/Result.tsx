@@ -10,7 +10,7 @@ const Result: React.FC = () => {
   );
   return (
     <>
-      <h1>Result works!</h1>
+      <h1>Thank you for your purchase!</h1>
       <pre>{data ? JSON.stringify(data.status) : "...loading"}</pre>
     </>
   );
