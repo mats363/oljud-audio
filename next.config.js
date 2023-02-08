@@ -16,6 +16,7 @@ const nextConfig = {
 
     return config;
   },
+  images: {domains: ['fvqxlvtmxhnqnxdyjczy.supabase.co']}
 };
 
 module.exports = nextConfig;
