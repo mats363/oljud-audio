@@ -13,20 +13,8 @@
         font-size: 1rem;
         font-weight: 500;
         &:hover {
-            color: $primary-color;
+            color: white;
         }
-    }
-
-    .linkContainer {
-        width: 8rem;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $gray;
-        border-radius: 1px;
-        display: flex;
-        flex-direction: row;
     }
 
     .cartContainer {
@@ -36,13 +24,14 @@
         position: relative;
         align-items: center;
         justify-content: center;
-        background-color: $gray;
-        border-radius: 1px;
         display: flex;
         flex-direction: row;
+        margin-right: 1rem;
         
-        .cartCounter{
+        .cartCounter {
             position: absolute;
+            width: 15px;
+            height: 15px;
             top: 0;
             right: 0;
             background-color: red;
@@ -50,7 +39,10 @@
             font-size: 1rem;
             font-weight: 500;
             padding: 0rem;
-            border-radius: 50%;
-        }
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
     }
 }

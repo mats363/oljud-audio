@@ -14,9 +14,11 @@ const Navbar: React.FC = () => {
         <Link suppressHydrationWarning href="/checkout">
           <CartIcon />
         </Link>
-        <p suppressHydrationWarning className={styles.cartCounter}>
-          {cartItems.length}
-        </p>
+        {cartItems.length > 0 && (
+          <div suppressHydrationWarning className={styles.cartCounter}>
+            {cartItems.length}
+          </div>
+        )}
       </div>
     </ul>
   );
