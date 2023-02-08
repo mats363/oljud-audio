@@ -62,16 +62,26 @@ const Checkout: React.FC = () => {
                 <h3>{item.product}</h3>
                 <p>SEK: {item.price}</p>
                 <div className={styles.buttons}>
-                  <button onClick={() => removeFromCart(item.id)}>
-                    Remove from cart
-                  </button>
+                  <div
+                    className={styles.removeBtn}
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Remove
+                  </div>
                 </div>
               </div>
             ))}
-          <h2 suppressHydrationWarning>Total: SEK {getTotalPrice()}</h2>
-          <button role="link" onClick={handleClick}>
+          <h2 suppressHydrationWarning>Total: {getTotalPrice()} SEK</h2>
+          <div className={styles.btn} role="link" onClick={handleClick}>
             Checkout
-          </button>
+          </div>
+          <div>
+            <p>Secure payment handled by Stripe. </p>
+            <p>
+              Your digital download will be sent to the provided email adress in
+              the next step.
+            </p>
+          </div>
         </div>
       )}
     </section>
