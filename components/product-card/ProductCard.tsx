@@ -8,7 +8,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className={styles.container}>
-      <img src={product.product_image!} alt={product.product!} />
+      <img
+        className={styles.img}
+        src={product.product_image!}
+        alt={product.product!}
+      />
       <h2>{product.product}</h2>
       <p>{product.price}</p>
       <AudioPlayer audio={product.audio_preview!} />
