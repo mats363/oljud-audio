@@ -5,7 +5,7 @@
    
 }
 .togglePlay {
-    // background: url(../assets/play.svg) no-repeat center center;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,13 +15,22 @@
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    transform: scale(1);
+  
     &:hover {
-        // background: url(../images/play.svg) no-repeat center center;
-        background-size: 100% 100%;
-        transform: scale(1.1);
+      transform: scale(1.1);
     }
+  
     &.playing {
-        // background: url(../images/pause.svg) no-repeat center center;
-        background-size: 100% 100%;
+      transform: scale(1);
     }
-}
+  
+    @media (max-width: 515px) {
+      transform: scale(2.0);
+  
+      &:hover {
+        transform: scale(2.1);
+      }
+    }
+  }
+  
