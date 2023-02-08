@@ -16,13 +16,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         height={200}
         alt={product.image!}
       />
-      <h2>{product.product}</h2>
-      <p>{product.price}</p>
+      <div className={styles.info}>
+        <h2>{product.product}</h2>
+        <p>{product.price}</p>
+      </div>
       <AudioPlayer audio={product.audio_preview!} />
-      <button onClick={() => addToCart(product)}>Add to cart</button>
-      <button onClick={() => removeFromCart(product.id)}>
-        Remove from cart
-      </button>
+      <div className={styles.buttons}>
+        <button onClick={() => addToCart(product)}>Add to cart</button>
+        <button onClick={() => removeFromCart(product.id)}>
+          Remove from cart
+        </button>
+      </div>
     </section>
   );
 };

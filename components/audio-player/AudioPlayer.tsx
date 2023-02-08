@@ -10,16 +10,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
-    console.log(audio);
-    // if (audioRef.current === null) return;
+    if (audioRef.current === null) return;
 
-    // if (isPlaying) {
-    //   audioRef.current.pause();
-    // } else {
-    //   audioRef.current.play();
-    // }
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
 
-    // setIsPlaying(!isPlaying);
+    setIsPlaying(!isPlaying);
   };
   return (
     <>
@@ -27,7 +26,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
         <source src={audio} type="audio/mpeg" />
       </audio>
       <div onClick={togglePlay} className={styles.togglePlay}>
-        {isPlaying ? "play" : "pause"}
+        {isPlaying ? "pause" : "play"}
       </div>
     </>
   );
