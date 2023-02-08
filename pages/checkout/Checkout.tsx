@@ -4,6 +4,7 @@ import getStripe from "../../utils/get-stripe";
 import { IProduct } from "../../models/IProduct";
 import { useShoppingCart } from "../../components/shopping-cart/useShoppingCart";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -43,43 +44,37 @@ const Checkout: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.container}>
-        {show && cart.length === 0 ? (
-          <h1>Your Cart is Empty!</h1>
-        ) : (
-          <div>
-            <div className={styles.header}>
-              <div>Image</div>
-              <div>Product</div>
-              <div>Price</div>
-              <div>Quantity</div>
-              <div>Actions</div>
-              <div>Total Price</div>
-            </div>
-            {show &&
-              cart.map((item: IProduct) => (
-                <div key={item.id} className={styles.body}>
-                  <p>{item.product}</p>
-                  <p>$ {item.price}</p>
-                  <div className={styles.buttons}>
-                    <button onClick={() => removeFromCart(item.id)}>
-                      Remove from cart
-                    </button>
-                  </div>
-                  <p>$ {item.price!}</p>
+    <section className={styles.container}>
+      {show && cart.length === 0 ? (
+        <h1>Your Cart is Empty!</h1>
+      ) : (
+        <div>
+          <h1>Checkout</h1>
+          {show &&
+            cart.map((item: IProduct) => (
+              <div key={item.id} className={styles.cartItem}>
+                <Image
+                  src={item.product_image!}
+                  height={100}
+                  width={100}
+                  alt={item.product!}
+                />
+                <h3>{item.product}</h3>
+                <p>SEK: {item.price}</p>
+                <div className={styles.buttons}>
+                  <button onClick={() => removeFromCart(item.id)}>
+                    Remove from cart
+                  </button>
                 </div>
-              ))}
-            <h2 suppressHydrationWarning>Total: SEK {getTotalPrice()}</h2>
-            <button role="link" onClick={handleClick}>
-              Checkout
-            </button>
-            ;
-          </div>
-        )}
-      </div>
-      ;
-    </>
+              </div>
+            ))}
+          <h2 suppressHydrationWarning>Total: SEK {getTotalPrice()}</h2>
+          <button role="link" onClick={handleClick}>
+            Checkout
+          </button>
+        </div>
+      )}
+    </section>
   );
 };
 
