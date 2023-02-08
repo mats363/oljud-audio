@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Footer.module.scss";
-import Email from "../../../oljud-audio/assets/svgs/email.svg";
-import FacebookIcon from "../../../oljud-audio/assets/svgs/facebook.svg";
-import InstagramIcon from "../../../oljud-audio/assets/svgs/instagram.svg";
-import TikTokIcon from "../../../oljud-audio/assets/svgs/tiktok.svg";
+import Email from "../../assets/svgs/email.svg";
+import FacebookIcon from "../../assets/svgs/facebook.svg";
+import InstagramIcon from "../../assets/svgs/instagram.svg";
+import TikTokIcon from "../../assets/svgs/tiktok.svg";
 const Footer: React.FC = () => {
   return (
     <footer className={styles.container}>
