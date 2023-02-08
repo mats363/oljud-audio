@@ -26,11 +26,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
         <source src={audio!} type="audio/mpeg" />
       </audio>
       <div onClick={togglePlay} className={styles.togglePlay}>
-        {isPlaying ? (
-          <i className="bi bi-pause-fill"></i>
-        ) : (
-          <i className="bi bi-play"></i>
-        )}
+        {isPlaying ? "play" : "pause"}
       </div>
     </>
   );
