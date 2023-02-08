@@ -10,9 +10,6 @@ const Navbar: React.FC = () => {
 
   return (
     <ul className={styles.container}>
-      <li className={styles.linkContainer}>
-        <Link href="/about">About</Link>
-      </li>
       <div className={styles.cartContainer}>
         <Link suppressHydrationWarning href="/checkout">
           <CartIcon />
