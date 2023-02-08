@@ -6,7 +6,7 @@ type ProductProps = { products: IProduct[] };
 
 export const Products: React.FC<ProductProps> = ({ products }) => {
   return (
-    <section className={styles.productContainer}>
+    <section suppressHydrationWarning className={styles.productContainer}>
       {products!.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

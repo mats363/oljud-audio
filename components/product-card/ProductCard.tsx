@@ -3,6 +3,7 @@ import styles from "./ProductCard.module.scss";
 import { useShoppingCart } from "../shopping-cart/useShoppingCart";
 import { ProductCardProps } from "./types";
 import AudioPlayer from "../audio-player";
+import ProductDetails from "../product-details";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart, removeFromCart, cartItems } = useShoppingCart();
@@ -21,6 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <h2>{product?.product}</h2>
         <p>SEK: {product?.price}:-</p>
       </div>
+      <div>{product.description}</div>
       <div className={styles.buttons}>
         {cartItems.find((item) => item.id === product.id) ? (
           <div onClick={() => removeFromCart(product.id)}>-</div>
