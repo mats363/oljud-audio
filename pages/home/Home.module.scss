@@ -1,5 +1,7 @@
+@import '../../styles/_variables.scss';
+
 .productContainer {
-    background-color: aquamarine;
+    background-color: #0D0D0D;
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-gap: 1rem;
