@@ -14,7 +14,7 @@ export interface Database {
           audio_preview: string | null
           category: string | null
           created_at: string | null
-          download_link: string | null
+          description: string | null
           id: number
           price: number | null
           price_id: string | null
@@ -25,7 +25,7 @@ export interface Database {
           audio_preview?: string | null
           category?: string | null
           created_at?: string | null
-          download_link?: string | null
+          description?: string | null
           id?: number
           price?: number | null
           price_id?: string | null
@@ -36,7 +36,7 @@ export interface Database {
           audio_preview?: string | null
           category?: string | null
           created_at?: string | null
-          download_link?: string | null
+          description?: string | null
           id?: number
           price?: number | null
           price_id?: string | null

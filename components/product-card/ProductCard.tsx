@@ -5,28 +5,28 @@ import { ProductCardProps } from "./types";
 import AudioPlayer from "../audio-player";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, removeFromCart } = useShoppingCart();
+  const { addToCart, removeFromCart, cartItems } = useShoppingCart();
 
   return (
     <section className={styles.card}>
       <img
         className={styles.img}
-        src={product.product_image!}
-        alt={product.product!}
+        src={product?.product_image!}
+        alt={product?.product!}
       />
       <div className={styles.audioPlayer}>
-        {" "}
         <AudioPlayer audio={product.audio_preview!} />
       </div>
       <div className={styles.info}>
-        <h2>{product.product}</h2>
-        <p>{product.price}</p>
+        <h2>{product?.product}</h2>
+        <p>SEK: {product?.price}:-</p>
       </div>
       <div className={styles.buttons}>
-        <button onClick={() => addToCart(product)}>Add to cart</button>
-        <button onClick={() => removeFromCart(product.id)}>
-          Remove from cart
-        </button>
+        {cartItems.find((item) => item.id === product.id) ? (
+          <div onClick={() => removeFromCart(product.id)}>-</div>
+        ) : (
+          <div onClick={() => addToCart(product)}>+</div>
+        )}
       </div>
     </section>
   );
