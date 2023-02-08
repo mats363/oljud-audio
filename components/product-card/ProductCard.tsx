@@ -2,6 +2,7 @@ import { IProduct } from "../../models/IProduct";
 import styles from "./ProductCard.module.scss";
 import { useShoppingCart } from "../shopping-cart/useShoppingCart";
 import { ProductCardProps } from "./types";
+import AudioPlayer from "../audio-player";
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart, removeFromCart } = useShoppingCart();
@@ -11,6 +12,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <img src={product.product_image!} alt={product.product!} />
       <h2>{product.product}</h2>
       <p>{product.price}</p>
+      <AudioPlayer />
       <audio controls>
         <source src={product.audio_preview!} type="audio/mpeg" />
       </audio>
