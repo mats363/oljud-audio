@@ -1,6 +1,10 @@
+@import '../../styles/_variables.scss';
+
 .container {
-    background-color: black;
+    background-color: $primary-color ;
     display: flex;
     justify-content: space-between;
-    margin: 1rem;
+    align-items: center;
+    margin: 0rem;
+    padding: 0rem;
 }
