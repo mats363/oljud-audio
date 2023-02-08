@@ -3,12 +3,13 @@
 .container {
     height: 15rem;
     max-width: 100vw;
-    background-color: $primary-color ;
+    background-color: #303030 ;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 2rem;
-    padding: 0rem;
+    margin: 0rem;
+    margin-bottom: 0;
+    padding: 2rem;
 
     h3 {
         color: $off-white;
@@ -49,12 +50,17 @@
         align-items: flex-start;
         gap: 1rem;
         padding: 0rem;
+        .email {
+            display: flex;
+            gap: 10px
+        }
 
         .socialMedia {
+            width: 50%;
             display: flex;
             flex-direction: row;
-            align-items: center;
-            justify-content: space-around;
+            align-items: flex-start;
+            justify-content: space-between;
             gap: 1rem;
             padding: 0rem;
         }
