@@ -39,6 +39,7 @@
     "zustand": "^4.3.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "@types/micro-cors": "^0.1.2",
     "supabase": "^1.33.0"
   }

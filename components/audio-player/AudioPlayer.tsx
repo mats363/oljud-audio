@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import styles from "./AudioPlayer.module.scss";
-
+import PlayIcon from "../../assets/svgs/play.svg";
+import PauseIcon from "../../assets/svgs/pause.svg";
 type AudioPlayerProps = {
   audio: string;
 };
@@ -21,14 +22,14 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
     setIsPlaying(!isPlaying);
   };
   return (
-    <>
+    <div className={styles.container}>
       <audio ref={audioRef}>
         <source src={audio} type="audio/mpeg" />
       </audio>
       <div onClick={togglePlay} className={styles.togglePlay}>
-        {isPlaying ? "pause" : "play"}
+        {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </div>
-    </>
+    </div>
   );
 };
 
