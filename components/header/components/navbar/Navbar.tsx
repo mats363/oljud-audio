@@ -13,11 +13,12 @@ const Navbar: React.FC = () => {
       <li className={styles.linkContainer}>
         <Link href="/about">About</Link>
       </li>
-      <li className={styles.cartContainer}>
+      <div className={styles.cartContainer}>
         <Link suppressHydrationWarning href="/checkout">
-          <CartIcon />({cartItems.length})
+          <CartIcon />
         </Link>
-      </li>
+        <p className={styles.cartCounter}>{cartItems.length}</p>
+      </div>
     </ul>
   );
 };
