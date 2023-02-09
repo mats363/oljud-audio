@@ -1,0 +1,36 @@
+@import '../../styles/_variables.scss';
+
+.container {
+    display: flex;
+   
+}
+.togglePlay {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% 100%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  
+    &.playing {
+      transform: scale(1);
+    }
+  
+    @media (max-width: 515px) {
+      transform: scale(2.0);
+  
+      &:hover {
+        transform: scale(2.1);
+      }
+    }
+  }
+  

@@ -1,0 +1,53 @@
+.container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 20px;
+    box-sizing: border-box;
+
+    .cartItem{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        font-size: large;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        background-color: #f0c14b;
+        color: black;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: #ddb347;
+        }
+
+    }
+    .removeBtn {
+        
+        padding: 10px;
+        border-radius: 2px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            background-color: crimson;
+        }
+
+    }
+}

@@ -1,0 +1,70 @@
+@import '../../styles/variables.scss';
+
+.container {
+    height: 20%;
+    width: 100vw;
+    background-color: #303030 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0rem;
+    margin-bottom: 0;
+    margin-top: 8rem;
+    padding: 2rem;
+
+    h3 {
+        color: $off-white;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0rem;
+        padding: 0rem;}
+
+    p {
+        color: $off-white;
+        font-size: 10rem;
+        font-weight: 500;
+        margin: 0rem;
+        padding: 0rem;
+    }
+        
+    .infoBox {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0rem;
+
+        p {
+            color: $off-white;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0rem;
+            padding: 0rem;
+        }
+    }
+
+    .contactBox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0rem;
+        .email {
+            display: flex;
+            gap: 10px
+        }
+
+        .socialMedia {
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0rem;
+        }
+
+    }
+
+}
