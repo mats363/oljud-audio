@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;    
+
+    h1 {
+        color: $off-white;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0rem;
+        padding: 0rem;
+    }
+    p{
+        color: $off-white;
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0rem;
+        padding: 0rem;
+    }
+}
