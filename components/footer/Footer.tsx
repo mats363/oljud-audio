@@ -16,11 +16,12 @@ const Footer: React.FC = () => {
       </section>
       <section className={styles.contactBox}>
         <h3>Contact</h3>
-        <div className={styles.email}>
-          <Email /> <a href="mailto:info@oljud.com"> info@oljud.com</a>
-        </div>
+        <div className={styles.email}></div>
 
         <div className={styles.socialMedia}>
+          <a href="mailto:info@oljud.com">
+            <Email />
+          </a>
           <a href="https://www.facebook.com/oljudaudio">
             <FacebookIcon />
           </a>
