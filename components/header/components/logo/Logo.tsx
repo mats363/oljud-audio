@@ -4,7 +4,7 @@ import styles from "./Logo.module.scss";
 
 const Logo: React.FC = () => {
   return (
-    <Link href="/">
+    <Link href="/" className={styles.container}>
       <LogoIcon className={styles.logo} />
     </Link>
   );
