@@ -9,7 +9,6 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ products }) => {
-  console.log(products + " i Home");
   if (products) {
     return (
       <>
@@ -25,10 +24,8 @@ const Home: React.FC<HomeProps> = ({ products }) => {
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const { data: products, error } = await Supabase.from("products").select("*");
   if (error) {
-    console.log(error);
     throw new Error(error.message);
   } else {
-    console.log("success");
     return { props: { products } };
   }
 };

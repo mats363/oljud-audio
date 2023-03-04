@@ -7,7 +7,7 @@ type AudioPlayerProps = {
 };
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
@@ -15,6 +15,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
 
     if (isPlaying) {
       audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     } else {
       audioRef.current.play();
     }
